@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Tesseract.Common" Version="1.0.203.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PTM.Entities\PTM.Entities.csproj" />
+    <ProjectReference Include="..\PTM.PublicDataModel\PTM.PublicDataModel.csproj" />
+  </ItemGroup>
+
+
+</Project>

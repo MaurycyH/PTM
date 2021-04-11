@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+	   xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
+
+  <Product Id="*" Name="Personal Time Management" Language="1033" Version="1.0.0.0" Manufacturer="PTM Team" UpgradeCode="671a69c4-e4c1-4522-82d9-a1dd7e703d3c">
+    <Package InstallerVersion="300" Compressed="yes" InstallScope="perMachine" />
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of PTM is already installed." />
+    <!-- Wszsykie pliki będa zawierac sie w .MSI a nie osobno-->
+    <MediaTemplate EmbedCab="yes"/>
+
+    <Icon Id="icon.ico" SourceFile="$(var.PTM.Terminal.ProjectDir)Resources\Images\PTM_icon.ico"/>
+
+    <!--Wybieranie startowego foledru w UI-->
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder" Name="PFiles">
+        <Directory Id="INSTALLATIONDIR" Name="PTM">
+        </Directory>
+      </Directory>
+      <!-- Ustawianie Menu Start-->
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="PTM"/>
+      </Directory>
+      <!-- Ustawianie sktrótu na pulpicie -->
+      <Directory Id="DesktopFolder" Name="Desktop">
+        <Component Id="ApplicationShortcutDesktop" Guid="*">
+          <Shortcut Id="ApplicationDesktopShortcut"
+              Name="PTM"
+              Description="Presonal Team Managment"
+              Target="[INSTALLATIONDIR]PTM.Terminal.exe"
+              WorkingDirectory="INSTALLATIONDIR"/>
+          <RemoveFolder Id="DesktopFolder" On="uninstall"/>
+          <RegistryValue
+              Root="HKCU"
+              Key="Software\PTM\Personal Time Managment"
+              Name="installed"
+              Type="integer"
+              Value="1"
+              KeyPath="yes"/>
+        </Component>
+      </Directory>
+    </Directory>
+
+    <!-- Ustawianie ikonki i opisu w dodaj lub usun programy-->
+    <Property Id="ARPPRODUCTICON">icon.ico</Property>
+
+    <!-- Ustawianie UI-->
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLATIONDIR" />
+    <WixVariable Id="WixUILicenseRtf" Value="$(var.ProjectDir)\Assets\License.rtf" />
+    <UI>
+      <UIRef Id="WixUI_InstallDir" />
+      <Publish Dialog="ExitDialog"
+      Control="Finish"
+      Event="DoAction"
+      Value="LaunchApplication">WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed</Publish>
+    </UI>
+    
+    <!-- Konfigurowanie Menu Start -->
+    <DirectoryRef Id="ApplicationProgramsFolder">
+      <Component Id="ApplicationShortcut" Guid="FEA36CB0-B916-4986-AEC2-51B3DD9B49DF">
+        <Shortcut Id="ApplicationStartMenuShortcut"
+                  Name="PTM"
+                  Description="Personal Time Managment"
+                  Target="[INSTALLATIONDIR]PTM.Terminal.exe"
+                  WorkingDirectory="INSTALLATIONDIR"/>
+        <RemoveFolder Id="CleanUpShortCut" Directory="ApplicationProgramsFolder" On="uninstall"/>
+        <RegistryValue Root="HKCU" Key="Software\PTM\Personal Time Managment" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
+
+    <!-- Custom Akcje na uruchomienie po instalacji-->
+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch PTM" />
+    <Property Id="WixShellExecTarget" Value="[INSTALLATIONDIR]PTM.Terminal.exe" />
+    <CustomAction Id="LaunchApplication"
+        BinaryKey="WixCA"
+        DllEntry="WixShellExec"
+        Impersonate="yes" />
+
+
+    <!-- Instalowanie wybranych Elementow -->
+    <Feature Id="ProductFeature" Title="Personal Time Management" Level="1">
+      <ComponentGroupRef Id="HeatComponents"/>
+      <ComponentRef Id="ApplicationShortcut" />
+      <ComponentRef Id="ApplicationShortcutDesktop" />
+    </Feature>
+    
+  </Product>
+</Wix>

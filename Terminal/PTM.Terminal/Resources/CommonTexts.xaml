@@ -1,0 +1,44 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+    <!-- DialogBuilder -->
+    <system:String x:Key="IDS_DialogBuilder_ConfirmTitle">Confirmation Required.</system:String>
+    <system:String x:Key="IDS_DialogBuilder_WarningTitle">Attention Required.</system:String>
+    <system:String x:Key="IDS_DialogBuilder_ChoiceTitle">Are you sure?</system:String>
+    <system:String x:Key="IDS_DialogBuilder_ErrorTitle">An Error Occured.</system:String>
+    <system:String x:Key="IDS_DialogBuilder_SuccessTitle">Operation Completed.</system:String>
+    <!--Program.cs-->
+    <system:String x:Key="IDS_Program_InstanceExists">Another instance of the program is already running.</system:String>
+    <system:String x:Key="IDS_Program_CriticalError">Critical error occured!</system:String>
+    <!-- ChromeClass-->
+    <system:String x:Key="IDS_WindowChrome_UserLogged">Logged as</system:String>
+    <system:String x:Key="IDS_WindowChrome_NextTask">Next task:</system:String>
+    <!-- MainWindowVieModel -->
+    <system:String x:Key="IDS_MainWindowViewModel_Scheduler">Scheduler</system:String>
+    <system:String x:Key="IDS_MainWindowViewModel_Boards">Boards</system:String>
+    <!-- DlgWorkItemDetails -->
+    <system:String x:Key="IDS_DlgWorkItemDetails_WorkItemName">Name:</system:String>
+    <system:String x:Key="IDS_DlgWorkItemDetails_WorkItemDescription">Details:</system:String>
+    <system:String x:Key="IDS_DlgWorkItemDetails_TimeActiveFrom">Work Item active from:</system:String>
+    <system:String x:Key="IDS_DlgWorkItemDetails_TimeActiveTo">to:</system:String>
+    <system:String x:Key="IDS_DlgWorkItemDetails_Save">Save</system:String>
+    <!--TaskBoardView-->
+    <system:String x:Key="IDS_TaskBoardListView_UserTaskBoards">My Task Boards</system:String>
+    <system:String x:Key="IDS_TaskBoardListView_NewTaskBoard">+</system:String>
+    <system:String x:Key="IDS_TaskBoardListView_UnfinishedWorkItems">Unfinished Items</system:String>
+    <!-- WorkItemManagementViewModel -->
+    <system:String x:Key="IDS_CtrlWorkItemManagementHeader_Back">&lt;</system:String>
+    <system:String x:Key="IDS_CtrlWorkItemManagementHeader_EditMode">- Edit Mode</system:String>
+    <system:String x:Key="IDS_CtrlTaskContainer_Title">Title</system:String>
+    <system:String x:Key="IDS_CtrlTaskContainer_AddContainer">Add Container</system:String>
+    <system:String x:Key="IDS_CtrlTaskContainer_TaskContent">Lorem ipsum</system:String> 
+    <system:String x:Key="IDS_CtrlTask_AddTask">+</system:String>
+    <!--Exceptions-->
+    <system:String x:Key="IDS_Exception_IncorretViewModelBase">View model has incorrect base.</system:String>
+    <!--LoginWindow-->
+    <system:String x:Key="IDS_LoginWindow_Header">Welcome to Personal Time Management (PTM)</system:String>
+    <system:String x:Key="IDS_LoginWindow_InvitationText">PTM is time management software you have full visibility and control over your tasks. The app allows you to edit your current tasks, change the time allocated to the task and track them using graphs.</system:String>
+    <system:String x:Key="IDS_LoginWindow_AuthenticationError">There was an error during authentication.</system:String>
+    <system:String x:Key="IDS_LoginWindow_SignUpBaseText">Dont't have an account?</system:String>
+    <system:String x:Key="IDS_LoginWindow_SignUpUnderlinedText">Sign up now!</system:String>
+</ResourceDictionary>

@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="PTM.Terminal.CustomControls.CtrlRibbonHeader"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PTM.Terminal.CustomControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PTM.Terminal;component/Resources/MergedDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <Image Width="24" Height="24" Source="{Binding IconSource, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:CtrlRibbonHeader}}}"/>
+            <Label Foreground="{StaticResource BrushTextPanelColor}" Content="{Binding HeaderDescription, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:CtrlRibbonHeader}}}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
+

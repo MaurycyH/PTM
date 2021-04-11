@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="PTM.Terminal.TaskBoards.TaskBoardMainView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PTM.Terminal.TaskBoards"
+             xmlns:WorkItems="clr-namespace:PTM.Terminal.TaskBoards.WorkItems"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PTM.Terminal;component/Resources/MergedDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate x:Key="TaskBoardViewTemplate" DataType="{x:Type local:TaskBoardMainViewModel}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <local:CtrlTaskBoardListHeader Grid.Row="0"/>
+                    <local:CtrlTaskBoardListView Grid.Row="1"/>
+                </Grid> 
+            </DataTemplate>
+            <DataTemplate x:Key="TaskManagementViewTemplate" DataType="{x:Type WorkItems:WorkItemManagementViewModel}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <WorkItems:CtrlWorkItemManagementHeader Grid.Row="0"/>
+                    <ContentControl Content="{Binding ManagementView}" Grid.Row="1"/>
+                </Grid>
+            </DataTemplate>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <ContentControl Grid.Row="1" Content="{Binding .}">
+            <ContentControl.Style>
+                <Style TargetType="{x:Type ContentControl}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding CurrentView}" Value="ListView">
+                            <Setter Property="ContentTemplate" Value="{StaticResource TaskBoardViewTemplate}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding CurrentView}" Value="ManagementView">
+                            <Setter Property="ContentTemplate" Value="{StaticResource TaskManagementViewTemplate}"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ContentControl.Style>
+        </ContentControl>
+    </Grid>
+</UserControl>

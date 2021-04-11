@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:media="clr-namespace:System.Windows.Media;assembly=PresentationCore">
+    <!-- MainWindowViewModel -->
+    <media:ImageSource x:Key="IMG_MainWindowViewModel_SchedulerIcon">/PTM.Terminal;component/Resources/Images/IMG_MainWindowViewModel_Scheduler.png</media:ImageSource>
+    <media:ImageSource x:Key="IMG_MainWindowViewModel_BoardsIcon">/PTM.Terminal;component/Resources/Images/IMG_MainWindowViewModel_Boards.png</media:ImageSource>
+    <media:ImageSource x:Key="IMG_MainWindowViewModel_ShareIcon">/PTM.Terminal;component/Resources/Images/IMG_MainWindowViewModel_Share.png</media:ImageSource>
+    <media:ImageSource x:Key="IMG_MainWindowViewModel_AvatarIcon">/PTM.Terminal;component/Resources/Images/IMG_MainWindowViewModel_Avatar.png</media:ImageSource>
+    <!--LoginWindow-->
+    <media:ImageSource x:Key="IMG_LoginWindow_GoogleIcon">/PTM.Terminal;component/Resources/Images/IMG_LoginWindow_Google.png</media:ImageSource>
+    <media:ImageSource x:Key="IMG_LoginWindow_MicrosoftIcon">/PTM.Terminal;component/Resources/Images/IMG_LoginWindow_Microsoft.png</media:ImageSource>
+</ResourceDictionary>

@@ -1,0 +1,105 @@
+﻿<UserControl x:Class="PTM.Terminal.TaskBoards.WorkItems.CtrlWorkItemContainer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PTM.Terminal.TaskBoards.WorkItems"
+             mc:Ignorable="d" 
+             d:DesignWidth="200">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PTM.Terminal;component/Resources/MergedDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Color x:Key="BackgroundTitleColor">#f3f2f1</Color>
+            <Color x:Key="BackgroundReturnButtonColorWhite">#f3f2f1</Color>
+            <Color x:Key="ForegroundReturnButton">#6f6e6d</Color>
+            <Color x:Key="ForegroundReturnButtonOnMouseOver">#8b8cc7</Color>
+            <Color x:Key="BackgroundReturnButton">#6264a7</Color>
+
+            <SolidColorBrush x:Key="BrushForegroundReturnButton" Color="{StaticResource ForegroundReturnButton}"/>
+            <SolidColorBrush x:Key="BrushForegroundReturnButtonOnMouseOver" Color="{StaticResource ForegroundReturnButtonOnMouseOver}"/>
+            <SolidColorBrush x:Key="BrushBackgroundReturnButtonColorWhite" Color="{StaticResource BackgroundReturnButtonColorWhite}"/>
+            <SolidColorBrush x:Key="BrushBackgroundTitleColor" Color="{StaticResource BackgroundTitleColor}"/>
+            <SolidColorBrush x:Key="BrushBackgroundReturnButton" Color="{StaticResource BackgroundReturnButton}"/>
+
+            <Style x:Key="AddTaskButtonStyle" TargetType="{x:Type Button}">
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Opacity" Value="1"/>
+                <Setter Property="FontFamily" Value="Segoe"/>
+                <Setter Property="FontWeight" Value="DemiBold"/>
+                <Setter Property="FontSize" Value="25"/>
+                <Setter Property="Foreground" Value="{StaticResource BrushForegroundReturnButton}"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="Background" Value="{StaticResource BrushBackgroundReturnButtonColorWhite}"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="{TemplateBinding Background}" BorderThickness="0">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Foreground" Value="{StaticResource BrushForegroundReturnButtonOnMouseOver}"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style x:Key="WorkItemButtonStyle" TargetType="{x:Type Button}">
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="BorderBrush" Value="LightGray"/>
+                <Setter Property="Opacity" Value="1"/>
+                <Setter Property="FontFamily" Value="Segoe"/>
+                <Setter Property="FontWeight" Value="DemiBold"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="Foreground" Value="{StaticResource BrushTextColor}"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="Background" Value="{StaticResource BrushBackgroundReturnButtonColorWhite}"/>
+                <Setter Property="Margin" Value="0,0,0,4"/>
+                <Setter Property="Padding" Value="2"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="{TemplateBinding Background}" BorderThickness="1" BorderBrush="LightGray">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="{StaticResource BrushForegroundReturnButton}"/>
+                        <Setter Property="Foreground" Value="{StaticResource BrushBackgroundReturnButtonColorWhite}"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBox Text="{Binding Name}" Grid.Row="0" Background="{StaticResource BrushBackgroundReturnButton}" TextAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" VerticalContentAlignment="Center" Foreground="{StaticResource BrushTextPanelColor}" MinHeight="35" BorderBrush="{StaticResource BrushBackgroundReturnButton}" FontWeight="DemiBold" FontFamily="Segoe" FontSize="17" Padding="5" BorderThickness="2" SelectionBrush="{StaticResource BrushBackgroundReturnButton}" Margin="0,0,0,2"/>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalContentAlignment="Stretch" Height="Auto" BorderThickness="0.5">
+            <ItemsControl ItemsSource="{Binding WorkItems}" MinWidth="180" Background="{StaticResource BrushBackgroundTitleColor}" HorizontalContentAlignment="Stretch" Height="Auto">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Button Command="{Binding DataContext.ShowEditDialogCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                    CommandParameter="{Binding .}"
+                                    Content="{Binding Name}" Width="180" MinHeight="35" Style="{StaticResource WorkItemButtonStyle}"/>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+        <Button Content="{StaticResource IDS_CtrlTask_AddTask}" Grid.Row="2" Background="AliceBlue" Command="{Binding AddWorkItemCommand}" Style="{StaticResource AddTaskButtonStyle}"/>
+    </Grid>
+</UserControl>
