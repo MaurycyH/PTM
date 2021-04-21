@@ -21,12 +21,16 @@ Download and save user's avatar from Google and Microsoft
 Implementing own top bar using ChromeWindow and handling Aero snap events
 
 Writing some simple unit tests
+
+Making WiX installer
 	
 ## Technologies
 Project is created with:
 * WPF
 * NET core 3.1
 * Entity Framework: ??
+* MS Graph API
+* WiX Installer
 	
 ## Setup
 To run this project, install it locally:
