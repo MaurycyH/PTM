@@ -1,8 +1,8 @@
 ## General info
 This project was created by 4 people:
-@DawidDiaco
+[DawidDiaco](https://github.com/DawidDiaco)
 @LeonPazdur
-@MaurycyH
+[MaurycyH](https://github.com/MaurycyH)
 Tomasz K.
 
 The purpose of this program is to help you organize your free time and plan your day.
