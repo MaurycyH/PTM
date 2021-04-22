@@ -42,11 +42,9 @@ To run this project, install it locally:
 ```
 ## Screenshots
 Below I am pasting sample screenshots from the application.
-<p float="left">
-  <img src="https://user-images.githubusercontent.com/72604629/115781838-38145300-a3bb-11eb-94f0-e68d7480abb7.png" width="40%" height="60%" />
+<p float="center">
+  <img src="https://user-images.githubusercontent.com/72604629/115781838-38145300-a3bb-11eb-94f0-e68d7480abb7.png" width="60%" height="80%"/>
   <img src="https://user-images.githubusercontent.com/72604629/115781919-511d0400-a3bb-11eb-8dda-263ce3389e07.png" width="80%" height="80%"/> 
-</p>
-<p float="left">
-  <img src="https://user-images.githubusercontent.com/72604629/115781915-511d0400-a3bb-11eb-9d05-ed3e03394047.png" width="80%" height="80%" />
+  <img src="https://user-images.githubusercontent.com/72604629/115781915-511d0400-a3bb-11eb-9d05-ed3e03394047.png" width="80%" height="80%"/>
   <img src="https://user-images.githubusercontent.com/72604629/115781911-50846d80-a3bb-11eb-9ea5-cc67659034ee.png" width="80%" height="80%"/> 
 </p>
