@@ -1,7 +1,7 @@
 ## General info
 This project was created by 4 people:
 [DawidDiaco](https://github.com/DawidDiaco)
-@LeonPazdur
+[LeonPazdur](https://github.com/PazleoJGC)
 [MaurycyH](https://github.com/MaurycyH)
 Tomasz K.
 
@@ -35,10 +35,15 @@ Project is created with:
 * WiX Installer
 	
 ## Setup
-To run this project, install it locally:
+To run this project you need to pass your own database string connection and own OAuth2.0 Tokens to authenticate user.
+You can find connectionstring and Microsoft Client Id inside App.config file in PTM.Logic project. Google token you can change inside GoogleAuthentication.cs file.
 
 ```
-
+  <connectionStrings>
+    <add name="PtmConnection" providerName="System.Data.SqlClient" connectionString="Data Source=*IP*;Initial Catalog=PTM.Dev;Persist Security Info=True;User ID=DevServiceAccount;Password=*PASS*"/>
+    <add name="MicrosoftClientId" connectionString="*TOKEN*"/>
+  </connectionStrings>
+  
 ```
 ## Screenshots
 Below I am pasting sample screenshots from the application.
